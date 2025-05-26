@@ -1,12 +1,12 @@
 import { GraphQLList, GraphQLNonNull, GraphQLObjectType } from 'graphql/type/index.js';
-import {MemberType, MemberTypeId} from './types/memberType.js';
-import { Context, ID } from './types/context.js';
-import { Profile } from './types/profile.js';
-import { Post } from './types/post.js';
-import { User } from './types/user.js';
-import {UUIDType} from "./types/uuid.js";
+import {MemberType, MemberTypeId} from '../types/memberType.js';
+import { Context, ID } from '../types/context.js';
+import { Profile } from '../types/profile.js';
+import { Post } from '../types/post.js';
+import { User } from '../types/user.js';
+import {UUIDType} from "../types/uuid.js";
 
-export const queryType = new GraphQLObjectType({
+export const queryHandler = new GraphQLObjectType({
   name: 'Query',
   fields: {
     memberTypes: {
@@ -74,7 +74,7 @@ export const queryType = new GraphQLObjectType({
     },
 
     user: {
-      type: User,
+      type: User as GraphQLObjectType,
       args: {
         id: { type: new GraphQLNonNull(UUIDType) },
       },
